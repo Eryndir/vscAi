@@ -1,0 +1,8 @@
+{
+"version": 3,
+"file": "vsc-Ai.-Live-Chart.js",
+"mappings": ";;;AAmBA,SAAAA,gCAAA,CAAA,IAAA;;gEAAA,YAAA;WAAA,CAAA;;UAAA,KAAA,GAAAC,wDAAA,CAAA,uCAAA,CAAA,CAAA;8FAAA,iDAAA,CAAA,KAAA;;YAAA,CAAA;;;C;AAAA,SAAAD,gCAAA,uC;",
+"sources": ["file:///home/eryndir/code/vscAi/src/main/scala/vscAi/VscAi.scala"],
+"names": ["main", "internal-3ebfae0cba70adf981029a0da5b1e4b5ab5d02c6"],
+"lineCount": 16
+}

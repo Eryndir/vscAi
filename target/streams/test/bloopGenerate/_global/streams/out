@@ -1,0 +1,4 @@
+[debug] [vscAi-test] Classpath dependencies List()
+[debug] [vscAi-test] Dependencies from configurations List(vscAi)
+[debug] Bloop wrote the configuration of project 'vscAi-test' to '/home/eryndir/code/vscAi/.bloop/vscAi-test.json'
+[success] Generated .bloop/vscAi-test.json

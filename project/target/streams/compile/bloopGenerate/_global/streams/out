@@ -1,0 +1,4 @@
+[debug] [vscai-build] Classpath dependencies List()
+[debug] [vscai-build] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'vscai-build' to '/home/eryndir/code/vscAi/project/.bloop/vscai-build.json'
+[success] Generated .bloop/vscai-build.json

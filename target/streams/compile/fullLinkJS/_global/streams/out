@@ -1,0 +1,462 @@
+[0m[[0m[0minfo[0m] [0m[0mFull optimizing /home/eryndir/code/vscAi/target/scala-3.2.2/vscai-opt[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method constructor java.io.PushbackReader.<init>(java.io.Reader)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.BufferedSource.scala$io$BufferedSource$$decachedReader()java.io.BufferedReader[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.BufferedSource.addString(scala.collection.mutable.StringBuilder,java.lang.String,java.lang.String,java.lang.String)scala.collection.mutable.StringBuilder[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from scala.collection.IterableOnceOps.addString(scala.collection.mutable.StringBuilder,java.lang.String,java.lang.String,java.lang.String)scala.collection.mutable.StringBuilder[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.collection.IterableOnceOps.mkString(java.lang.String,java.lang.String,java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.collection.IterableOnceOps.mkString(java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from scala.collection.Iterator.mkString(java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from scala.io.Source$.createBufferedSource(java.io.InputStream,int,scala.Function0,scala.Function0,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  involving instantiated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m      instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m        (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method java.io.PushbackReader.unread(int)void[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from java.io.PushbackReader.unread(int)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.BufferedSource.scala$io$BufferedSource$$decachedReader()java.io.BufferedReader[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.BufferedSource.addString(scala.collection.mutable.StringBuilder,java.lang.String,java.lang.String,java.lang.String)scala.collection.mutable.StringBuilder[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from scala.collection.IterableOnceOps.addString(scala.collection.mutable.StringBuilder,java.lang.String,java.lang.String,java.lang.String)scala.collection.mutable.StringBuilder[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.collection.IterableOnceOps.mkString(java.lang.String,java.lang.String,java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.collection.IterableOnceOps.mkString(java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from scala.collection.Iterator.mkString(java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from scala.io.Source$.createBufferedSource(java.io.InputStream,int,scala.Function0,scala.Function0,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  involving instantiated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m      instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m        (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.PushbackReader[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.BufferedSource.scala$io$BufferedSource$$decachedReader()java.io.BufferedReader[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.BufferedSource.addString(scala.collection.mutable.StringBuilder,java.lang.String,java.lang.String,java.lang.String)scala.collection.mutable.StringBuilder[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from scala.collection.IterableOnceOps.addString(scala.collection.mutable.StringBuilder,java.lang.String,java.lang.String,java.lang.String)scala.collection.mutable.StringBuilder[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.collection.IterableOnceOps.mkString(java.lang.String,java.lang.String,java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.collection.IterableOnceOps.mkString(java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from scala.collection.Iterator.mkString(java.lang.String)java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from scala.io.Source$.createBufferedSource(java.io.InputStream,int,scala.Function0,scala.Function0,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[0mdebug[0m] [0m[0m    called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  involving instantiated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m      instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m        (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method constructor java.io.FileInputStream.<init>(java.io.File)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method java.io.FileInputStream.close()void[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from java.io.FileInputStream.close()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private scala.io.Source$.$anonfun$fromFile$2(java.io.FileInputStream)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.FileInputStream[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method java.io.FileInputStream.close()void[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from java.io.FileInputStream.close()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private scala.io.Source$.$anonfun$fromFile$2(java.io.FileInputStream)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.FileInputStream[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private scala.io.Source$.$anonfun$fromFile$2(java.io.FileInputStream)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method constructor java.io.File.<init>(java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method java.io.File.getAbsolutePath()java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from java.io.File.getAbsolutePath()java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.File[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.File[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent method java.io.File.getAbsolutePath()java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  dispatched from java.io.File.getAbsolutePath()java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.File[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0mReferring to non-existent class java.io.File[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private scala.io.Source$.$anonfun$fromFile$1(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,int,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.io.File,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,scala.io.Codec)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from scala.io.Source$.fromFile(java.lang.String,java.lang.String)scala.io.BufferedSource[0m
+[0m[[0m[31merror[0m] [0m[0m  called from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[31merror[0m] [0m[0m  called from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$1(org.scalajs.dom.MouseEvent)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.startButton$$anonfun$adapted$1(org.scalajs.dom.MouseEvent)java.lang.Object[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.startButton()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.Main$.appElement()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[31merror[0m] [0m[0m  called from vscAi.VscAi$package$.LiveChart()void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[31merror[0m] [0m[0m  called from core module module initializers[0m
+[0m[[0m[31merror[0m] [0m[0minvolving instantiated classes:[0m
+[0m[[0m[31merror[0m] [0m[0m  scala.io.Source$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from model.DataSet$.fromFile(java.lang.String,java.lang.String)model.DataSet[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  model.DataSet$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from constructor model.main$minusprogram$package$.<init>()void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.VscAi$package$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from static vscAi.LiveChart.main([java.lang.String)void[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[31merror[0m] [0m[0m  vscAi.Main$[0m
+[0m[[0m[0mdebug[0m] [0m[0m    instantiated from private vscAi.VscAi$package$.LiveChart$$anonfun$2()com.raquo.laminar.nodes.ReactiveElement[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (already seen, not repeating call stack)[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 145324 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: 205825 us[0m
+[0m[[0m[31merror[0m] [0m[0mThere were linking errors[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mfullLinkJS[0m) There were linking errors[0m

@@ -1,0 +1,25 @@
+[0m[[0m[0minfo[0m] [0m[0mFast optimizing /home/eryndir/code/vscAi/target/scala-3.2.2/vscai-fastopt[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 14841 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 22396 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: 202307 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Batch mode: false[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Incremental part: 16460 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Elidable constructors: 284 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Optimizing 14 methods.[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: Optimizer part: 2382 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mOptimizer: 22739 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 10334 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 5949 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: 16965 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mModule Splitter: Calculate Dependency Info: 435 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mModule Splitter: Analyze Modules: 2096 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mModule Splitter: Assemble Modules: 582 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mModule Splitter: 3232 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Generate Classes: 9124 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Write trees: 678 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 473 -- invalidated: 1[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: reused: 2227 -- invalidated: 8[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: Post transforms: total: 39 -- nested: 29 -- nested avoided: 352[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter: 13385 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasicBackend: Write result: 28547 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasicBackend: total modules: 4; re-written: 1[0m
