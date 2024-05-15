@@ -49,7 +49,8 @@ def runAi =
   test(testData)
 
 def trainAi =
-  ai.train(cycles = 600,  data = trainData)
+  ai.train(cycles = 100,  data = trainData)
 
-def testAi = 
-  test(testData)
+def testAi(inputLength:String, inputWeight: String) = 
+  val predicted = ai.predict(Array(inputLength.toDouble, inputWeight.toDouble))
+  println(binaryClassifier(predicted(0)))

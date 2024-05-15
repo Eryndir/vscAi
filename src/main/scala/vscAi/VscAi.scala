@@ -14,9 +14,12 @@ import scala.compiletime.ops.boolean
 val javascriptLogo: String = js.native
 
 var weightList = Var(List[String]())
+var outputList = Var(List[String]())
 var nodeList:List[String] = List()
 var nodeCount = 0
 
+var weight = Var("")
+var lenght = Var("")
 @main
 def LiveChart(): Unit =
   renderOnDomContentLoaded(
@@ -32,6 +35,7 @@ object Main:
         runButton(),
         trainButton(),
         dataButton(),
+        inputs(),
       ),
       div(
         display.flex, // same as `display := "none"`
@@ -46,6 +50,33 @@ object Main:
     
   end appElement
 end Main
+
+def inputs(): Element = 
+  div(
+    p(
+    label("Length: "),
+    input(
+      placeholder("123"),
+      maxLength(3), // HTML can help block some undesired input
+      controlled(
+        value <-- lenght,
+        onInput.mapToValue.filter(_.forall(Character.isDigit)) --> lenght
+      )
+    )
+  ),
+  p(
+    label("Weight: "),
+    input(
+      placeholder("123"),
+      maxLength(3), // HTML can help block some undesired input
+      controlled(
+        value <-- weight,
+        onInput.mapToValue.filter(_.forall(Character.isDigit)) --> weight
+      )
+    )
+  )
+  )
+end inputs
 
 def dataButton(): Element =
   val counter = Var(0)
@@ -80,7 +111,10 @@ def runButton(): Element =
     tpe := "button",
     "run",
     onClick --> { event => {
-      testAi
+      testAi(lenght.now(), weight.now())
+      outputList.set(List())
+      for i <- 0 until nodeCount yield
+        outputList.update(_ :+ ai.getOutputs(nodeList(i)))
     }},
   )
 end runButton
@@ -124,15 +158,56 @@ def node(nodeId:String, nodeCount:Int): Element =
         svg.cx:="75",
         svg.cy:="75",
         svg.fill:="red",
-        onClick --> {event => println("wow") },
+        onClick --> {event => println(nodeId) },
       ),
+      if ((nodeCount > 1 && nodeCount < 5) || nodeCount == 7) {
+      svg.svg(
       svg.text(
-        child.text <-- weightList.signal.map(c => c(nodeCount)),
-        svg.x := "50%",
-        svg.y:="10%",
+        child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(0)),
+        svg.x := "40%",
+        svg.y:="40%",
         svg.textAnchor := "middle",
         svg.fill:="white"
-      )
+      ),
+      svg.text(
+        child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(1)),
+        svg.x := "40%",
+        svg.y:="60%",
+        svg.textAnchor := "middle",
+        svg.fill:="white"
+      ))} else if (nodeCount > 4 && nodeCount < 7) {
+        svg.svg(
+          svg.text(
+            child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(0)),
+            svg.x := "40%",
+            svg.y:="35%",
+            svg.textAnchor := "middle",
+            svg.fill:="white"
+          ),
+          svg.text(
+            child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(1)),
+            svg.x := "40%",
+            svg.y:="50%",
+            svg.textAnchor := "middle",
+            svg.fill:="white"
+          ),
+          svg.text(
+            child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(2)),
+            svg.x := "40%",
+            svg.y:="65%",
+            svg.textAnchor := "middle",
+            svg.fill:="white"
+          )
+          )
+      }
+      else emptyNode,
+      svg.text(
+        child.text <-- outputList.signal.map(c => c(nodeCount)),
+        svg.x := "80%",
+        svg.y:="50%",
+        svg.textAnchor := "middle",
+        svg.fill:="white"
+      ),
     )
   )
 end node

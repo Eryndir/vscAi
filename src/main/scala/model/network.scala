@@ -124,9 +124,22 @@ class Network(val inputSize: Int, val layerSizes: List[Int]):
 
     val weightsString = (
             for index <- 0 until weights.length
-            yield weights(0).toString().substring(0, 5)
-        ).mkString("\n")
+            yield weights(index).toString().substring(0, 5)
+        ).mkString(",")
 
     return weightsString
+
+  def getOutputs(nodeId: String): String = 
+    val layer = nodeId.charAt(1).asDigit-1
+    
+    val index = nodeId.charAt(2).asDigit
+    if(layer <0) {
+      return input(index).toString()
+    }
+    val outs = ai.neurons(layer)(index).output().toString()
+
+
+    return outs.substring(0,3) +"..."+ (outs takeRight 4)
+  
     
       
