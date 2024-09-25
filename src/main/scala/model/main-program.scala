@@ -18,6 +18,21 @@ def showColor(text: String, colorCode: String): String =
   colorCode + text + Console.RESET
 
 /** Use data to test our ai. A loss close to zero represents high certainty. **/
+
+def testCountReturn():Int = 
+  var data = testData
+  var count = 0
+  for i <- data.inputs.indices do
+    val predicted = ai.predict(data.inputs(i))
+    val correct = data.correctOutputs(i)
+    val loss = meanSquareError(predicted, correct)
+
+    if binaryClassifier(correct(0)) == binaryClassifier(predicted(0)) then count +=1
+  return count
+
+def test(): Unit =
+  test(testData)
+
 def test(data: DataSet): Unit =
   for i <- data.inputs.indices do
     val predicted = ai.predict(data.inputs(i))
@@ -49,8 +64,12 @@ def runAi =
   test(testData)
 
 def trainAi =
-  ai.train(cycles = 100,  data = trainData)
+  ai.train(cycles = 10,  data = trainData)
 
 def testAi(inputLength:String, inputWeight: String) = 
   val predicted = ai.predict(Array(inputLength.toDouble, inputWeight.toDouble))
   println(binaryClassifier(predicted(0)))
+
+def testAiReturn(inputLength:String, inputWeight: String): String= 
+  val predicted = ai.predict(Array(inputLength.toDouble, inputWeight.toDouble))
+  return binaryClassifier(predicted(0))

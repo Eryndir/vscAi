@@ -4,6 +4,7 @@ import com.raquo.laminar.api.L.{*, given}
 import scala.scalajs.js
 import scala.scalajs.js.annotation.*
 import org.scalajs.dom
+import scala.scalajs.js.timers._
 import model._
 import typings.d3.global.d3
 import typings.std.stdStrings.text
@@ -13,13 +14,31 @@ import scala.compiletime.ops.boolean
 @js.native @JSImport("/javascript.svg", JSImport.Default)
 val javascriptLogo: String = js.native
 
-var weightList = Var(List[String]())
+/* var weightList = Var(List[String]())
 var outputList = Var(List[String]())
 var nodeList:List[String] = List()
-var nodeCount = 0
+var nodeCount = 0 */
+
+
+var weights = List(Var("w1"),Var("w2"),Var("w3"))
+var inputs = List(Var("x1"),Var("x2"),Var("x3"))
+var output = Var("o")
+var outputsAll = List(Var("0"),Var("1"),Var("2"),Var("3"),Var("4"))
+var bias = Var("b")
+
+var rightAmount = Var(0)
+var rightCycles = Var(0)
+
+var networkOutput = Var("OUTPUT")
 
 var weight = Var("")
 var lenght = Var("")
+var nodeCount = 0
+
+var nodeList = List[String]()
+
+var singular = true
+var modeRendering = Var(nodeSingular("4"))
 @main
 def LiveChart(): Unit =
   renderOnDomContentLoaded(
@@ -32,27 +51,33 @@ object Main:
     var clicker = Var(false)
     div(
       div(className := "card",
-        runButton(),
         trainButton(),
-        dataButton(),
-        inputs(),
+        recreateButton(),
+        testButton(),
+        trainFinishButton(),
       ),
-      div(
-        display.flex, // same as `display := "none"`
-        flexDirection.row, // same as `flexDirection := "column"`
-        justifyContent.center,
-        layer(0,2),
-        layer(1,3),
-        layer(2,2),
-        layer(3,1)
-      )
+      nodeShow()
     )
     
   end appElement
 end Main
 
-def inputs(): Element = 
+def modeButton(): Element =
+  button(
+    tpe := "button",
+    "Change mode",
+    onClick --> { event => {
+      if (singular) {
+        modeRendering.set(nodeSingular("2"))
+      } else {
+        modeRendering.set(nodeSingular("4"))
+      }
+      singular = !singular
+    }},
+  )
+def inputFields(): Element = 
   div(
+    paddingTop := "22%",
     p(
     label("Length: "),
     input(
@@ -74,23 +99,20 @@ def inputs(): Element =
         onInput.mapToValue.filter(_.forall(Character.isDigit)) --> weight
       )
     )
+  ),runButton(),
   )
-  )
-end inputs
+end inputFields
 
-def dataButton(): Element =
+def recreateButton(): Element =
   val counter = Var(0)
   button(
     tpe := "button",
     "recreate",
     onClick --> { event => {
       createNetwork
-      weightList.set(List())
-      for i <- 0 until nodeCount yield
-        weightList.update(_ :+ ai.getWeights(nodeList(i)))
     }},
   )
-end dataButton
+end recreateButton
 
 def trainButton(): Element =
   button(
@@ -98,26 +120,90 @@ def trainButton(): Element =
     "train",
     onClick --> { event => {
       println("train")
-      trainAi
-      weightList.set(List())
-      for i <- 0 until nodeCount yield
-        weightList.update(_ :+ ai.getWeights(nodeList(i)))
+      for i <- Range(0,5) yield {
+        println("step" + i)
+        trainAi
+        println(ai.layerSizes)
+        var weightsSeq = ai.getWeights("10")
+
+        weights(0).set(weightsSeq(0))
+        weights(1).set(weightsSeq(1))
+        weights(2).set(weightsSeq(2))
+        bias.set(ai.getBias("10"))
+        setTimeout(10000)
+      }
     }},
   )
 end trainButton
+
+def trainFinishButton(): Element =
+  button(
+    tpe := "button",
+    "train 'till done",
+    onClick --> { event => {
+      println("train")
+      var currentCount = 0
+      while(currentCount < 5) {
+        println("step" + i)
+        trainAi
+        rightCycles.update(c => c + 10)
+
+        currentCount = testCountReturn()
+        var weightsSeq = ai.getWeights("10")
+
+        weights(0).set(weightsSeq(0))
+        weights(1).set(weightsSeq(1))
+        weights(2).set(weightsSeq(2))
+        bias.set(ai.getBias("10"))
+        println(rightCycles.now())
+        println(currentCount)
+      }
+    }
+    },
+  )
+end trainFinishButton
 
 def runButton(): Element =
   button(
     tpe := "button",
     "run",
     onClick --> { event => {
-      testAi(lenght.now(), weight.now())
-      outputList.set(List())
+      var ret = testAiReturn(lenght.now(), weight.now())
+      
+      inputs(0).set(ai.getOutput("00"))
+      inputs(1).set(ai.getOutput("01"))
+      inputs(2).set(ai.getOutput("02"))
+      output.set(ai.getOutput("10"))
+
       for i <- 0 until nodeCount yield
-        outputList.update(_ :+ ai.getOutputs(nodeList(i)))
+        outputsAll(i).set(ai.getOutput(nodeList(i)))
+      
+      networkOutput.set(ret)
+      /* outputList.set(List())
+      for i <- 0 until nodeCount yield
+        outputList.update(_ :+ ai.getOutputs(nodeList(i))) */
     }},
   )
 end runButton
+
+def testButton(): Element =
+  button(
+    tpe := "button",
+    "test",
+    onClick --> { event => {
+      test()
+      inputs(0).set(ai.getOutput("00"))
+      inputs(1).set(ai.getOutput("01"))
+      inputs(2).set(ai.getOutput("02"))
+      output.set(ai.getOutput("10"))
+
+      for i <- 0 until nodeCount yield
+        println(nodeList(i))
+        outputsAll(i).set(ai.getOutput(nodeList(i)))
+    }},
+  )
+end testButton
+
 
 def layer(no:Int,n:Int): Element = 
   val divs = div(className := "layer",
@@ -126,13 +212,14 @@ def layer(no:Int,n:Int): Element =
     justifyContent.center,
     for i <- Range(0,n) yield {
       nodeCount +=1
-      nodeList = nodeList :+ "n" + no.toString+i.toString
+      nodeList = nodeList :+ "" + no.toString+i.toString 
       node("n" + no.toString+i.toString, nodeCount-1)
     }
-  )
+  ) 
 
   return divs
 end layer
+
 
 def genNetwork(): Unit =
   val tmp = ai.getData
@@ -145,8 +232,182 @@ def getCoord(id:String): (Double, Double) =
   return (rect.x,rect.y)
 end getCoord
 
+def plusSvg(x:String, y:String): Element =
+ svg.svg(
+      svg.x :=x,
+      svg.y:=y,
+      svg.height := "25",
+      svg.width := "25",
+      svg.rect(
+        svg.height := "20",
+        svg.width := "20",
+        svg.fill:="white",
+      ),
+      svg.line(
+        svg.x1 := "3",
+        svg.y1 := "10",
+        svg.x2 := "17",
+        svg.y2 := "10",
+        svg.fill:="black",
+        svg.stroke:="black"
+      ),
+      svg.line(
+        svg.x1 := "10",
+        svg.y1 := "3",
+        svg.x2 := "10",
+        svg.y2 := "17",
+        svg.fill:="black",
+        svg.stroke:="black"
+      ),
+      )
+
+def mulSvg(x:String, y:String): Element =
+  svg.svg(
+      svg.x :=x,
+      svg.y:=y,
+      svg.height := "25",
+      svg.width := "25",
+      svg.circle(
+        svg.r:="10",
+        svg.cx:="12",
+        svg.cy:="12",
+        svg.fill:="white",
+      ),
+      svg.line(
+        svg.x1 := "5",
+        svg.y1 := "5",
+        svg.x2 := "20",
+        svg.y2 := "20",
+        svg.fill:="black",
+        svg.stroke:="black"
+      ),
+      svg.line(
+        svg.x1 := "5",
+        svg.y1 := "20",
+        svg.x2 := "20",
+        svg.y2 := "5",
+        svg.fill:="black",
+        svg.stroke:="black"
+      ),
+      )
+
+def nodeShow(): Element =
+  div(
+    child <-- modeRendering
+  )
+  
+
+def nodeSingular(nodeId:String): Element = 
+  div(
+    display.flex, // same as `display := "none"`
+    flexDirection.row, // same as `flexDirection := "column"`
+    justifyContent.center,
+    className:=nodeId,
+    inputFields(),
+    layer(0,3),
+    div(
+      svg.svg(
+        svg.height := "250",
+        svg.width := "270",
+        svg.circle(
+          svg.r:="95",
+          svg.cx:="135",
+          svg.cy:="125",
+          svg.fill:="red",
+          onClick --> {event => println(nodeId) },
+        ),
+          svg.svg(
+            plusSvg("52%","44%"),
+            mulSvg(
+              "20%",
+              "27%"
+            ),
+            mulSvg(
+              "20%",
+              "43%"
+            ),
+            mulSvg(
+              "20%",
+              "59%"
+            ),
+            //inputs
+            svg.text(
+              child.text <-- inputs(0),
+              svg.x := "5%",
+              svg.y:="35%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+            svg.text(
+              child.text <-- inputs(1),
+              svg.x := "5%",
+              svg.y:="50%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+            svg.text(
+              child.text <-- inputs(2),
+              svg.x := "5%",
+              svg.y:="65%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+
+            //weights
+
+            svg.text(
+              child.text <-- weights(0),
+              svg.x := "40%",
+              svg.y:="35%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+            svg.text(
+              child.text <-- weights(1),
+              svg.x := "40%",
+              svg.y:="50%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+            svg.text(
+              child.text <-- weights(2),
+              svg.x := "40%",
+              svg.y:="65%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+            
+            //output and bias
+            
+            svg.text(
+              child.text <-- output,
+              svg.x := "70%",
+              svg.y:="50%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ), svg.text(
+              child.text <-- bias,
+              svg.x := "55%",
+              svg.y:="65%",
+              svg.textAnchor := "middle",
+              svg.fill:="white"
+            ),
+          )
+      ),
+      layer(1,1)
+    ),layer(2,1),
+      svg.svg(
+        svg.text(
+          child.text <-- networkOutput,
+          svg.x := "50%",
+          svg.y:="50%",
+          svg.textAnchor := "middle",
+          svg.fill:="white"
+        ))
+      
+  )
+  
 def node(nodeId:String, nodeCount:Int): Element =
-  var weights = Var("")
 
   div(
     className:=nodeId,
@@ -163,14 +424,12 @@ def node(nodeId:String, nodeCount:Int): Element =
       if ((nodeCount > 1 && nodeCount < 5) || nodeCount == 7) {
       svg.svg(
       svg.text(
-        child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(0)),
         svg.x := "40%",
         svg.y:="40%",
         svg.textAnchor := "middle",
         svg.fill:="white"
       ),
       svg.text(
-        child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(1)),
         svg.x := "40%",
         svg.y:="60%",
         svg.textAnchor := "middle",
@@ -178,21 +437,21 @@ def node(nodeId:String, nodeCount:Int): Element =
       ))} else if (nodeCount > 4 && nodeCount < 7) {
         svg.svg(
           svg.text(
-            child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(0)),
+            child.text <-- outputsAll(nodeCount),
             svg.x := "40%",
             svg.y:="35%",
             svg.textAnchor := "middle",
             svg.fill:="white"
           ),
           svg.text(
-            child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(1)),
+            child.text <-- outputsAll(nodeCount),
             svg.x := "40%",
             svg.y:="50%",
             svg.textAnchor := "middle",
             svg.fill:="white"
           ),
           svg.text(
-            child.text <-- weightList.signal.map(c => c(nodeCount).split(",")(2)),
+            child.text <-- outputsAll(nodeCount),
             svg.x := "40%",
             svg.y:="65%",
             svg.textAnchor := "middle",
@@ -202,12 +461,13 @@ def node(nodeId:String, nodeCount:Int): Element =
       }
       else emptyNode,
       svg.text(
-        child.text <-- outputList.signal.map(c => c(nodeCount)),
+        child.text <-- outputsAll(nodeCount),
         svg.x := "80%",
         svg.y:="50%",
         svg.textAnchor := "middle",
         svg.fill:="white"
       ),
+        
     )
   )
-end node
+end node 

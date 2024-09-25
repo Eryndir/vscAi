@@ -105,41 +105,40 @@ class Network(val inputSize: Int, val layerSizes: List[Int]):
   end getData
 
   def getBias(nodeId: String): String = 
-    val layer = nodeId.charAt(1).asDigit-1
+    val layer = nodeId.charAt(0).asDigit
     println(nodeId)
     println(layer)
     
-    val index = nodeId.charAt(2).asDigit
-    println(index)
+    val index = nodeId.charAt(1).asDigit
     val bias = ai.neurons(layer)(index).bias
-    print(bias)
-    return s"$bias"
+    return s"$bias".substring(0,3)
   
-  def getWeights(nodeId: String): String = 
-    val layer = nodeId.charAt(1).asDigit-1
+  def getWeights(nodeId: String): IndexedSeq[String] = 
+    val layer = nodeId.charAt(0).asDigit
     
-    val index = nodeId.charAt(2).asDigit
-    if(layer <0) return ""
+    val index = nodeId.charAt(1).asDigit
     val weights = ai.neurons(layer)(index).weights
 
     val weightsString = (
             for index <- 0 until weights.length
             yield weights(index).toString().substring(0, 5)
-        ).mkString(",")
+        )
 
     return weightsString
 
-  def getOutputs(nodeId: String): String = 
-    val layer = nodeId.charAt(1).asDigit-1
+  def getOutput(nodeId: String): String = 
+    val layer = nodeId.charAt(0).asDigit
     
-    val index = nodeId.charAt(2).asDigit
+    val index = nodeId.charAt(1).asDigit
     if(layer <0) {
       return input(index).toString()
     }
     val outs = ai.neurons(layer)(index).output().toString()
 
-
-    return outs.substring(0,3) +"..."+ (outs takeRight 4)
-  
+    if(outs.length() > 3){
+      return outs.substring(0,3)
+    } else {
+      return outs
+    }
     
       
