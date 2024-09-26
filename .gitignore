@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+**/.metals
+**/metals.sbt
+**/.bsp
+**/.bloop
+**/.vscode
+**/target
+
