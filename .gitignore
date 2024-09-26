@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-.metals
+**/.metals
 **/metals.sbt
+**/.bsp
+**/.bloop
+**/.vscode
+**/target
 
