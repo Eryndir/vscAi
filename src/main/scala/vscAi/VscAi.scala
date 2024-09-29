@@ -6,19 +6,7 @@ import scala.scalajs.js.annotation.*
 import org.scalajs.dom
 import scala.scalajs.js.timers._
 import model._
-import typings.d3.global.d3
-import typings.std.stdStrings.text
 import scala.compiletime.ops.boolean
-
-// import javascriptLogo from "/javascript.svg"
-@js.native @JSImport("/javascript.svg", JSImport.Default)
-val javascriptLogo: String = js.native
-
-/* var weightList = Var(List[String]())
-var outputList = Var(List[String]())
-var nodeList:List[String] = List()
-var nodeCount = 0 */
-
 
 var weights = List(Var("w1"),Var("w2"),Var("w3"))
 var inputs = List(Var("x1"),Var("x2"),Var("x3"))
