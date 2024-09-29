@@ -37,6 +37,9 @@ var nodeCount = 0
 
 var nodeList = List[String]()
 
+var trainDataSignal = Var("")
+var testDataSignal = Var("")
+
 var singular = true
 var modeRendering = Var(nodeSingular("4"))
 @main
@@ -49,6 +52,10 @@ def LiveChart(): Unit =
 object Main:
   def appElement(): Element =
     var clicker = Var(false)
+
+    trainDataSignal.set(trainDataString)
+    testDataSignal.set(testDataString)
+
     div(
       div(className := "card",
         trainButton(),
@@ -56,7 +63,8 @@ object Main:
         testButton(),
         trainFinishButton(),
       ),
-      nodeShow()
+      nodeShow(),
+      datasetFields()
     )
     
   end appElement
@@ -103,6 +111,39 @@ def inputFields(): Element =
   )
 end inputFields
 
+def datasetFields(): Element =
+  div(
+      display.flex, // same as `display := "none"`
+      flexDirection.row, // same as `flexDirection := "column"`
+      justifyContent.center,
+    div(
+      p(
+        label("Train Data")
+      ),
+      textArea(
+        rows :=10,
+        controlled(
+          value <-- trainDataSignal,
+          onInput.mapToValue  --> trainDataSignal
+                  )
+              )
+        ),
+    div(
+    p(
+      label("Test Data")
+    ),
+    textArea(
+      rows :=10,
+      controlled(
+        value <-- testDataSignal,
+        onInput
+        .mapToValue
+        --> testDataSignal
+                )       
+            )
+      )
+   )
+  
 def recreateButton(): Element =
   val counter = Var(0)
   button(
@@ -122,7 +163,7 @@ def trainButton(): Element =
       println("train")
       for i <- Range(0,5) yield {
         println("step" + i)
-        trainAi
+        trainAi(DataSet.fromLines(trainDataSignal.now()))
         println(ai.layerSizes)
         var weightsSeq = ai.getWeights("10")
 
@@ -145,10 +186,10 @@ def trainFinishButton(): Element =
       var currentCount = 0
       while(currentCount < 5) {
         println("step" + i)
-        trainAi
+        trainAi(DataSet.fromLines(trainDataSignal.now()))
         rightCycles.update(c => c + 10)
 
-        currentCount = testCountReturn()
+        currentCount = testCountReturn(DataSet.fromLines(testDataSignal.now()))
         var weightsSeq = ai.getWeights("10")
 
         weights(0).set(weightsSeq(0))
@@ -191,7 +232,7 @@ def testButton(): Element =
     tpe := "button",
     "test",
     onClick --> { event => {
-      test()
+      test(DataSet.fromLines(testDataSignal.now()))
       inputs(0).set(ai.getOutput("00"))
       inputs(1).set(ai.getOutput("01"))
       inputs(2).set(ai.getOutput("02"))
@@ -295,7 +336,6 @@ def nodeShow(): Element =
   div(
     child <-- modeRendering
   )
-  
 
 def nodeSingular(nodeId:String): Element = 
   div(
