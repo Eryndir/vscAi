@@ -27,6 +27,10 @@ object DataSet:
   def testData(): DataSet =
     fromLines(testDataString)
 
+  def dataRows(multiLineString: String): Int =
+    val lines = multiLineString.trim.split("\n")
+    return lines.length
+
   /** Create a data set from a multi-line string.*/
   def fromLines(multiLineString: String): DataSet =
     val lines = multiLineString.trim.split("\n")

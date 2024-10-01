@@ -9,7 +9,7 @@ import model._
 import scala.compiletime.ops.boolean
 
 
-val weights = List(
+var weights = List(
   (Var("w000"),Var("w001"),Var("-1")),
   (Var("w010"),Var("w011"),Var("-1")),
   (Var("w020"),Var("w021"),Var("-1")),
@@ -20,7 +20,7 @@ val weights = List(
 
 
 //var inputs = List(Var("x1"),Var("x2"),Var("x3"))
-val inputs = List(
+var inputs = List(
   (Var("x000"),Var("x001"),Var("-1")),
   (Var("x010"),Var("x011"),Var("-1")),
   (Var("x020"),Var("x021"),Var("-1")),
@@ -32,7 +32,6 @@ val inputs = List(
 var outputs = List(Var("0"),Var("1"),Var("2"),Var("3"),Var("4"),Var("5"))
 var bias = Var("b")
 
-var rightAmount = Var(0)
 var rightCycles = Var(0)
 
 var networkOutput = Var("OUTPUT")
@@ -45,6 +44,8 @@ var nodeList = List[String]("00","01","02","10", "20","11")
 
 var trainDataSignal = Var("")
 var testDataSignal = Var("")
+
+var message = Var("Welcome to the neural network!")
 
 var singular = true
 var modeRendering = Var(nodeSingular("5"))
@@ -66,10 +67,11 @@ object Main:
       backgroundColor := "#242424",
       div(className := "card",
         trainButton(),
-        recreateButton(),
         testButton(),
         trainFinishButton(),
+        resetButton(),
       ),
+      messageField(),
       nodeShow(),
       datasetFields()
     )
@@ -91,6 +93,12 @@ def modeButton(): Element =
     }},
   )
 
+def messageField(): Element =
+  div(
+    p(
+      child.text <-- message
+    )
+)
 
 def inputFields(): Element = 
   div(
@@ -152,17 +160,24 @@ def datasetFields(): Element =
             )
       )
    )
-  
-def recreateButton(): Element =
-  val counter = Var(0)
+
+def resetButton(): Element =
   button(
     tpe := "button",
-    "recreate",
+    "reset",
     onClick --> { event => {
+      resetNetwork()
       createNetwork
     }},
   )
-end recreateButton
+end resetButton
+
+def resetNetwork(): Unit =
+    updateWeights(true)
+    updateInputs(true)
+    updateOutputs(true)
+    bias.set("b")
+end resetNetwork
 
 def trainButton(): Element =
   button(
@@ -191,7 +206,10 @@ def trainFinishButton(): Element =
     onClick --> { event => {
       println("train")
       var currentCount = 0
-      while(currentCount < 5) {
+      rightCycles.set(0)
+      
+      var goalCount = DataSet.dataRows(testDataSignal.now())
+      while(currentCount < goalCount) {
         println("step" + i)
         trainAi(DataSet.fromLines(trainDataSignal.now()))
         rightCycles.update(c => c + 10)
@@ -203,56 +221,99 @@ def trainFinishButton(): Element =
         bias.set(ai.getBias("10"))
         println(rightCycles.now())
         println(currentCount)
+        message.set(f"It took ${rightCycles.now()} training cycles to get $goalCount right")
       }
     }
     },
   )
 end trainFinishButton
 
-def updateInputs(): Unit = {
-  inputs(0)(0).set(ai.input(0).toString())
-  inputs(0)(1).set(ai.input(1).toString())
+def updateOutputs(reset:Boolean = false): Unit = {
 
-  inputs(1)(0).set(ai.input(0).toString())
-  inputs(1)(1).set(ai.input(1).toString())
-
-  inputs(2)(0).set(ai.input(0).toString())
-  inputs(2)(1).set(ai.input(1).toString())
-
-  inputs(5)(0).set(ai.getOutput("00"))
-  inputs(5)(1).set(ai.getOutput("01"))
-  inputs(5)(2).set(ai.getOutput("02"))
-
-  inputs(3)(0).set(ai.getOutput("00"))
-  inputs(3)(1).set(ai.getOutput("01"))
-  inputs(3)(2).set(ai.getOutput("02"))
-
-  inputs(4)(0).set(ai.getOutput("11"))
-  inputs(4)(1).set(ai.getOutput("10"))
+  for i <- 0 until nodeCount+1 yield
+        println(nodeList(i))
+        if reset then outputs(i).set(i.toString)
+        else outputs(i).set(ai.getOutput(nodeList(i)))
 }
 
-def updateWeights(): Unit = {
+def updateInputs(reset:Boolean = false): Unit = {
+  if(reset == true) {
+    inputs(0)(0).set("x000")
+    inputs(0)(1).set("x001")
+    inputs(1)(0).set("x010")
+    inputs(1)(1).set("x011")
+    inputs(2)(0).set("x020")
+    inputs(2)(1).set("x021")
+    inputs(5)(0).set("x100")
+    inputs(5)(1).set("x101")
+    inputs(5)(2).set("x102")
+    inputs(3)(0).set("x110")
+    inputs(3)(1).set("x111")
+    inputs(3)(2).set("x112")
+    inputs(4)(0).set("x200")
+    inputs(4)(1).set("x201")
 
+  } else {
+    inputs(0)(0).set(ai.input(0).toString())
+    inputs(0)(1).set(ai.input(1).toString())
 
-  weights(0)(0).set(ai.getWeights("00")(0))
-  weights(0)(1).set(ai.getWeights("00")(1))
+    inputs(1)(0).set(ai.input(0).toString())
+    inputs(1)(1).set(ai.input(1).toString())
 
-  weights(1)(0).set(ai.getWeights("01")(0))
-  weights(1)(1).set(ai.getWeights("01")(1))
+    inputs(2)(0).set(ai.input(0).toString())
+    inputs(2)(1).set(ai.input(1).toString())
 
-  weights(2)(0).set(ai.getWeights("02")(0))
-  weights(2)(1).set(ai.getWeights("02")(1))
+    inputs(5)(0).set(ai.getOutput("00"))
+    inputs(5)(1).set(ai.getOutput("01"))
+    inputs(5)(2).set(ai.getOutput("02"))
 
-  weights(5)(0).set(ai.getWeights("10")(0))
-  weights(5)(1).set(ai.getWeights("10")(1))
-  weights(5)(2).set(ai.getWeights("10")(1))
+    inputs(3)(0).set(ai.getOutput("00"))
+    inputs(3)(1).set(ai.getOutput("01"))
+    inputs(3)(2).set(ai.getOutput("02"))
 
-  weights(3)(0).set(ai.getWeights("11")(0))
-  weights(3)(1).set(ai.getWeights("11")(1))
-  weights(3)(2).set(ai.getWeights("11")(2))
+    inputs(4)(0).set(ai.getOutput("11"))
+    inputs(4)(1).set(ai.getOutput("10"))
+  }
+}
 
-  weights(4)(0).set(ai.getWeights("20")(0))
-  weights(4)(1).set(ai.getWeights("20")(1))
+def updateWeights(reset:Boolean = false): Unit = {
+  if(reset == true) {
+    weights(0)(0).set("w000")
+    weights(0)(1).set("w001")
+    weights(1)(0).set("w010")
+    weights(1)(1).set("w011")
+    weights(2)(0).set("w020")
+    weights(2)(1).set("w021")
+    weights(5)(0).set("w100")
+    weights(5)(1).set("w101")
+    weights(5)(2).set("w102")
+    weights(3)(0).set("w110")
+    weights(3)(1).set("w111")
+    weights(3)(2).set("w112")
+    weights(4)(0).set("w200")
+    weights(4)(1).set("w201")
+
+  } else {
+    weights(0)(0).set(ai.getWeights("00")(0))
+    weights(0)(1).set(ai.getWeights("00")(1))
+
+    weights(1)(0).set(ai.getWeights("01")(0))
+    weights(1)(1).set(ai.getWeights("01")(1))
+
+    weights(2)(0).set(ai.getWeights("02")(0))
+    weights(2)(1).set(ai.getWeights("02")(1))
+
+    weights(5)(0).set(ai.getWeights("10")(0))
+    weights(5)(1).set(ai.getWeights("10")(1))
+    weights(5)(2).set(ai.getWeights("10")(1))
+
+    weights(3)(0).set(ai.getWeights("11")(0))
+    weights(3)(1).set(ai.getWeights("11")(1))
+    weights(3)(2).set(ai.getWeights("11")(2))
+
+    weights(4)(0).set(ai.getWeights("20")(0))
+    weights(4)(1).set(ai.getWeights("20")(1))
+  }
 }
 
 
@@ -266,10 +327,7 @@ def runButton(): Element =
       updateInputs()
     
 
-      for i <- 0 until nodeCount+1 yield
-        var tmpOutput = ai.getOutput(nodeList(i))
-        outputs(i).set(tmpOutput)
-        println(f"${nodeList(i)} $tmpOutput")
+      updateOutputs()
       
       networkOutput.set(ret)
       /* outputList.set(List())
@@ -284,13 +342,12 @@ def testButton(): Element =
     tpe := "button",
     "test",
     onClick --> { event => {
-      test(DataSet.fromLines(testDataSignal.now()))
+      val total =  DataSet.dataRows(testDataSignal.now())
+      val correct = testCountReturn(DataSet.fromLines(testDataSignal.now()))
 
       updateInputs()
-
-      for i <- 0 until nodeCount yield
-        println(nodeList(i))
-        outputs(i).set(ai.getOutput(nodeList(i)))
+      message.set(f"$correct/$total correct")
+      updateOutputs()
     }},
   )
 end testButton
@@ -310,11 +367,6 @@ def layer(no:Int,n:Int): Element =
   return divs
 end layer
 
-
-def genNetwork(): Unit =
-  val tmp = ai.getData
-  println(tmp._1)
-end genNetwork
 
 def getCoord(id:String): (Double, Double) =
   val tmp: dom.Element = dom.document.querySelector("."+id)

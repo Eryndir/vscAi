@@ -111,7 +111,7 @@ class Network(val inputSize: Int, val layerSizes: List[Int]):
     
     val index = nodeId.charAt(1).asDigit
     val bias = ai.neurons(layer)(index).bias
-    return s"$bias".substring(0,3)
+    return s"$bias".substring(0,4)
   
   def getWeights(nodeId: String): IndexedSeq[String] = 
     val layer = nodeId.charAt(0).asDigit
@@ -136,7 +136,7 @@ class Network(val inputSize: Int, val layerSizes: List[Int]):
     val outs = ai.neurons(layer)(index).output().toString()
 
     if(outs.length() > 2){
-      return outs.substring(0,2) +"..."+ (outs takeRight 4)
+      return outs.substring(0,2) +"···"+ (outs takeRight 4)
     } else {
       return outs
     }
