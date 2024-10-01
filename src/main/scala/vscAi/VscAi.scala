@@ -8,10 +8,28 @@ import scala.scalajs.js.timers._
 import model._
 import scala.compiletime.ops.boolean
 
-var weights = List(Var("w1"),Var("w2"),Var("w3"))
-var inputs = List(Var("x1"),Var("x2"),Var("x3"))
-var output = Var("o")
-var outputsAll = List(Var("0"),Var("1"),Var("2"),Var("3"),Var("4"))
+
+val weights = List(
+  (Var("w000"),Var("w001"),Var("-1")),
+  (Var("w010"),Var("w011"),Var("-1")),
+  (Var("w020"),Var("w021"),Var("-1")),
+  (Var("w110"),Var("w111"),Var("w102")),
+  (Var("w200"),Var("w201"),Var("-1")),
+  (Var("w100"),Var("w101"),Var("w102"))
+  )
+
+
+//var inputs = List(Var("x1"),Var("x2"),Var("x3"))
+val inputs = List(
+  (Var("x000"),Var("x001"),Var("-1")),
+  (Var("x010"),Var("x011"),Var("-1")),
+  (Var("x020"),Var("x021"),Var("-1")),
+  (Var("x110"),Var("x111"),Var("x102")),
+  (Var("x200"),Var("x201"),Var("-1")),
+  (Var("x100"),Var("x101"),Var("x102"))
+  )
+
+var outputs = List(Var("0"),Var("1"),Var("2"),Var("3"),Var("4"),Var("5"))
 var bias = Var("b")
 
 var rightAmount = Var(0)
@@ -23,13 +41,13 @@ var weight = Var("")
 var lenght = Var("")
 var nodeCount = 0
 
-var nodeList = List[String]()
+var nodeList = List[String]("00","01","02","10", "20","11")
 
 var trainDataSignal = Var("")
 var testDataSignal = Var("")
 
 var singular = true
-var modeRendering = Var(nodeSingular("4"))
+var modeRendering = Var(nodeSingular("5"))
 @main
 def LiveChart(): Unit =
   renderOnDomContentLoaded(
@@ -45,6 +63,7 @@ object Main:
     testDataSignal.set(testDataString)
 
     div(
+      backgroundColor := "#242424",
       div(className := "card",
         trainButton(),
         recreateButton(),
@@ -71,6 +90,8 @@ def modeButton(): Element =
       singular = !singular
     }},
   )
+
+
 def inputFields(): Element = 
   div(
     paddingTop := "22%",
@@ -153,11 +174,9 @@ def trainButton(): Element =
         println("step" + i)
         trainAi(DataSet.fromLines(trainDataSignal.now()))
         println(ai.layerSizes)
-        var weightsSeq = ai.getWeights("10")
 
-        weights(0).set(weightsSeq(0))
-        weights(1).set(weightsSeq(1))
-        weights(2).set(weightsSeq(2))
+        updateWeights()
+
         bias.set(ai.getBias("10"))
         setTimeout(10000)
       }
@@ -178,11 +197,9 @@ def trainFinishButton(): Element =
         rightCycles.update(c => c + 10)
 
         currentCount = testCountReturn(DataSet.fromLines(testDataSignal.now()))
-        var weightsSeq = ai.getWeights("10")
 
-        weights(0).set(weightsSeq(0))
-        weights(1).set(weightsSeq(1))
-        weights(2).set(weightsSeq(2))
+        updateWeights()
+
         bias.set(ai.getBias("10"))
         println(rightCycles.now())
         println(currentCount)
@@ -192,6 +209,53 @@ def trainFinishButton(): Element =
   )
 end trainFinishButton
 
+def updateInputs(): Unit = {
+  inputs(0)(0).set(ai.input(0).toString())
+  inputs(0)(1).set(ai.input(1).toString())
+
+  inputs(1)(0).set(ai.input(0).toString())
+  inputs(1)(1).set(ai.input(1).toString())
+
+  inputs(2)(0).set(ai.input(0).toString())
+  inputs(2)(1).set(ai.input(1).toString())
+
+  inputs(5)(0).set(ai.getOutput("00"))
+  inputs(5)(1).set(ai.getOutput("01"))
+  inputs(5)(2).set(ai.getOutput("02"))
+
+  inputs(3)(0).set(ai.getOutput("00"))
+  inputs(3)(1).set(ai.getOutput("01"))
+  inputs(3)(2).set(ai.getOutput("02"))
+
+  inputs(4)(0).set(ai.getOutput("11"))
+  inputs(4)(1).set(ai.getOutput("10"))
+}
+
+def updateWeights(): Unit = {
+
+
+  weights(0)(0).set(ai.getWeights("00")(0))
+  weights(0)(1).set(ai.getWeights("00")(1))
+
+  weights(1)(0).set(ai.getWeights("01")(0))
+  weights(1)(1).set(ai.getWeights("01")(1))
+
+  weights(2)(0).set(ai.getWeights("02")(0))
+  weights(2)(1).set(ai.getWeights("02")(1))
+
+  weights(5)(0).set(ai.getWeights("10")(0))
+  weights(5)(1).set(ai.getWeights("10")(1))
+  weights(5)(2).set(ai.getWeights("10")(1))
+
+  weights(3)(0).set(ai.getWeights("11")(0))
+  weights(3)(1).set(ai.getWeights("11")(1))
+  weights(3)(2).set(ai.getWeights("11")(2))
+
+  weights(4)(0).set(ai.getWeights("20")(0))
+  weights(4)(1).set(ai.getWeights("20")(1))
+}
+
+
 def runButton(): Element =
   button(
     tpe := "button",
@@ -199,13 +263,13 @@ def runButton(): Element =
     onClick --> { event => {
       var ret = testAiReturn(lenght.now(), weight.now())
       
-      inputs(0).set(ai.getOutput("00"))
-      inputs(1).set(ai.getOutput("01"))
-      inputs(2).set(ai.getOutput("02"))
-      output.set(ai.getOutput("10"))
+      updateInputs()
+    
 
-      for i <- 0 until nodeCount yield
-        outputsAll(i).set(ai.getOutput(nodeList(i)))
+      for i <- 0 until nodeCount+1 yield
+        var tmpOutput = ai.getOutput(nodeList(i))
+        outputs(i).set(tmpOutput)
+        println(f"${nodeList(i)} $tmpOutput")
       
       networkOutput.set(ret)
       /* outputList.set(List())
@@ -221,14 +285,12 @@ def testButton(): Element =
     "test",
     onClick --> { event => {
       test(DataSet.fromLines(testDataSignal.now()))
-      inputs(0).set(ai.getOutput("00"))
-      inputs(1).set(ai.getOutput("01"))
-      inputs(2).set(ai.getOutput("02"))
-      output.set(ai.getOutput("10"))
+
+      updateInputs()
 
       for i <- 0 until nodeCount yield
         println(nodeList(i))
-        outputsAll(i).set(ai.getOutput(nodeList(i)))
+        outputs(i).set(ai.getOutput(nodeList(i)))
     }},
   )
 end testButton
@@ -241,11 +303,10 @@ def layer(no:Int,n:Int): Element =
     justifyContent.center,
     for i <- Range(0,n) yield {
       nodeCount +=1
-      nodeList = nodeList :+ "" + no.toString+i.toString 
       node("n" + no.toString+i.toString, nodeCount-1)
     }
+    
   ) 
-
   return divs
 end layer
 
@@ -345,37 +406,37 @@ def nodeSingular(nodeId:String): Element =
           onClick --> {event => println(nodeId) },
         ),
           svg.svg(
-            plusSvg("52%","44%"),
+            plusSvg("62%","44%"),
             mulSvg(
-              "20%",
+              "30%",
               "27%"
             ),
             mulSvg(
-              "20%",
+              "30%",
               "43%"
             ),
             mulSvg(
-              "20%",
+              "30%",
               "59%"
             ),
             //inputs
             svg.text(
-              child.text <-- inputs(0),
-              svg.x := "5%",
+              child.text <-- inputs(5)(0),
+              svg.x := "15%",
               svg.y:="35%",
               svg.textAnchor := "middle",
               svg.fill:="white"
             ),
             svg.text(
-              child.text <-- inputs(1),
-              svg.x := "5%",
+              child.text <-- inputs(5)(1),
+              svg.x := "15%",
               svg.y:="50%",
               svg.textAnchor := "middle",
               svg.fill:="white"
             ),
             svg.text(
-              child.text <-- inputs(2),
-              svg.x := "5%",
+              child.text <-- inputs(5)(2),
+              svg.x := "15%",
               svg.y:="65%",
               svg.textAnchor := "middle",
               svg.fill:="white"
@@ -384,22 +445,22 @@ def nodeSingular(nodeId:String): Element =
             //weights
 
             svg.text(
-              child.text <-- weights(0),
-              svg.x := "40%",
+              child.text <-- weights(5)(0),
+              svg.x := "50%",
               svg.y:="35%",
               svg.textAnchor := "middle",
               svg.fill:="white"
             ),
             svg.text(
-              child.text <-- weights(1),
-              svg.x := "40%",
+              child.text <-- weights(5)(1),
+              svg.x := "50%",
               svg.y:="50%",
               svg.textAnchor := "middle",
               svg.fill:="white"
             ),
             svg.text(
-              child.text <-- weights(2),
-              svg.x := "40%",
+              child.text <-- weights(5)(2),
+              svg.x := "50%",
               svg.y:="65%",
               svg.textAnchor := "middle",
               svg.fill:="white"
@@ -408,14 +469,14 @@ def nodeSingular(nodeId:String): Element =
             //output and bias
             
             svg.text(
-              child.text <-- output,
-              svg.x := "70%",
+              child.text <-- outputs(5),
+              svg.x := "80%",
               svg.y:="50%",
               svg.textAnchor := "middle",
               svg.fill:="white"
             ), svg.text(
               child.text <-- bias,
-              svg.x := "55%",
+              svg.x := "65%",
               svg.y:="65%",
               svg.textAnchor := "middle",
               svg.fill:="white"
@@ -440,47 +501,88 @@ def node(nodeId:String, nodeCount:Int): Element =
   div(
     className:=nodeId,
     svg.svg(
-      svg.height := "150",
-      svg.width := "150",
+      svg.fontSize := "smaller",
+      svg.height := "175",
+      svg.width := "175",
       svg.circle(
-        svg.r:="45",
-        svg.cx:="75",
-        svg.cy:="75",
+        svg.r:="50",
+        svg.cx:="80",
+        svg.cy:="80",
         svg.fill:="red",
-        onClick --> {event => println(nodeId) },
+        onClick --> {event => println(f"$nodeId, $nodeCount") },
       ),
-      if ((nodeCount > 1 && nodeCount < 5) || nodeCount == 7) {
+      if ((nodeCount >=0  && nodeCount < 3) || nodeCount == 4) {
       svg.svg(
+        svg.fontSize := "smaller",
       svg.text(
-        svg.x := "40%",
-        svg.y:="40%",
+        child.text <-- inputs(nodeCount)(0),
+        svg.x := "30%",
+        svg.y:="35%",
         svg.textAnchor := "middle",
         svg.fill:="white"
       ),
       svg.text(
-        svg.x := "40%",
+        child.text <-- inputs(nodeCount)(1),
+        svg.x := "30%",
         svg.y:="60%",
         svg.textAnchor := "middle",
         svg.fill:="white"
-      ))} else if (nodeCount > 4 && nodeCount < 7) {
+      ),
+      svg.text(
+        child.text <-- weights(nodeCount)(0),
+        svg.x := "60%",
+        svg.y:="35%",
+        svg.textAnchor := "middle",
+        svg.fill:="white"
+      ),
+      svg.text(
+        child.text <-- weights(nodeCount)(1),
+        svg.x := "60%",
+        svg.y:="60%",
+        svg.textAnchor := "middle",
+        svg.fill:="white"
+      )
+      )} else if (nodeCount ==3) {
         svg.svg(
+          svg.fontSize := "smaller",
           svg.text(
-            child.text <-- outputsAll(nodeCount),
-            svg.x := "40%",
+            child.text <-- inputs(nodeCount)(0),
+            svg.x := "30%",
             svg.y:="35%",
             svg.textAnchor := "middle",
             svg.fill:="white"
           ),
           svg.text(
-            child.text <-- outputsAll(nodeCount),
-            svg.x := "40%",
+            child.text <-- inputs(nodeCount)(1),
+            svg.x := "30%",
             svg.y:="50%",
             svg.textAnchor := "middle",
             svg.fill:="white"
           ),
           svg.text(
-            child.text <-- outputsAll(nodeCount),
-            svg.x := "40%",
+            child.text <-- inputs(nodeCount)(2),
+            svg.x := "30%",
+            svg.y:="65%",
+            svg.textAnchor := "middle",
+            svg.fill:="white"
+          ),
+          svg.text(
+            child.text <-- weights(nodeCount)(0),
+            svg.x := "60%",
+            svg.y:="35%",
+            svg.textAnchor := "middle",
+            svg.fill:="white"
+          ),
+          svg.text(
+            child.text <-- weights(nodeCount)(1),
+            svg.x := "60%",
+            svg.y:="50%",
+            svg.textAnchor := "middle",
+            svg.fill:="white"
+          ),
+          svg.text(
+            child.text <-- weights(nodeCount)(2),
+            svg.x := "60%",
             svg.y:="65%",
             svg.textAnchor := "middle",
             svg.fill:="white"
@@ -489,8 +591,8 @@ def node(nodeId:String, nodeCount:Int): Element =
       }
       else emptyNode,
       svg.text(
-        child.text <-- outputsAll(nodeCount),
-        svg.x := "80%",
+        child.text <-- outputs(nodeCount),
+        svg.x := "85%",
         svg.y:="50%",
         svg.textAnchor := "middle",
         svg.fill:="white"
